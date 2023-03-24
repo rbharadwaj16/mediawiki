@@ -4,7 +4,6 @@ metadata:
   name: mediawiki-svc
 spec:
   selector:
-    matchLabels:
       kubernetes.io/app: mediawiki
   ports:
     - name: http

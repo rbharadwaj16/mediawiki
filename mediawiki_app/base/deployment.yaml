@@ -4,6 +4,7 @@ metadata:
   name: mediawiki
   labels:
     kubernetes.io/app: mediawiki
+spec:
 replicas: 1
 selector:
   matchLabels:
