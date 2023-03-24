@@ -3,4 +3,4 @@ kind: Namespace
 metadata:
   labels:
     kubernetes.io/app: mediawiki
-  name: dev
+  name: dev-mediawiki
