@@ -7,6 +7,6 @@ spec:
       kubernetes.io/app: mediawiki
   ports:
     - name: http
-      port: 8080
+      port: 80
       targetPort: 80
-  type: ClusterIP
+  type: LoadBalancer
