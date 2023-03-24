@@ -14,7 +14,7 @@ RUN wget https://releases.wikimedia.org/mediawiki/1.39/mediawiki-1.39.2.tar.gz &
 #COPY  /tmp/mediawiki /opt/rh/httpd24/root/var/www/
 
 
-RUN sed -i -e 's|^DocumentRoot "/opt/rh/httpd24/root/var/www/"|DocumentRoot "/opt/rh/httpd24/root/var/www/mediawiki"|' -e 's|    DirectoryIndex index.html|    DirectoryIndex index.html index.html.var index.php|' -e 's|^<Directory "/opt/rh/httpd24/root/var/www/">|<Directory "/opt/rh/httpd24/root/var/www/mediawiki">|' /opt/rh/httpd24/root/etc/httpd/conf/httpd.conf
+RUN sed -i -e 's|^DocumentRoot "/opt/rh/httpd24/root/var/www"|DocumentRoot "/opt/rh/httpd24/root/var/www/mediawiki"|' -e 's|    DirectoryIndex index.html|    DirectoryIndex index.html index.html.var index.php|' -e 's|^<Directory "/opt/rh/httpd24/root/var/www">|<Directory "/opt/rh/httpd24/root/var/www/mediawiki">|' /opt/rh/httpd24/root/etc/httpd/conf/httpd.conf
 
 RUN chown -R apache:apache /opt/rh/httpd24/root/var/www/mediawiki
 
