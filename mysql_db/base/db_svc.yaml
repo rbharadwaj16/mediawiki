@@ -6,5 +6,5 @@ spec:
   selector:
     app: mariadb 
   ports: 
-    - port: 3306  
-  clusterIP: None
+    - port: 3306
+      targetPort: 3306
