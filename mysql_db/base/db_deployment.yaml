@@ -39,12 +39,12 @@ spec:
           volumeMounts:
             - name: mariadb-pv
               mountPath: /var/lib/mysql    
-            - name: mediawiki_sql_config
+            - name: mediawiki-sql-config
               mountPath: /docker-entrypoint-initdb.d                                           
       volumes: 
         - name: mariadb-pv
           persistentVolumeClaim:
             claimName: mediawiki-pvc
-        - name: mediawiki_sql_config
+        - name: mediawiki-sql-config
           configMap:
-            name: mediawiki_sql_config
+            name: mediawiki-sql-config
