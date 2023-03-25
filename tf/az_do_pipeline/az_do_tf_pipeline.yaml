@@ -1,0 +1,22 @@
+name: terraform_build_deploy_$(Build.DefinitionName)_$(SourceBranchName)_$(date:yyyymmdd)_$(Rev:r)
+
+trigger:
+  branches:
+    include:
+    - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages:
+- template: templates/stages/tf_build_stage.yaml
+  parameters:
+    env: build
+
+#DEV Env
+- template: templates/stages/tf_deploy_init_plan_apply_stage.yaml
+  parameters:
+    env: dev
+    serviceConnection: $(sc)
+    DependsOn: 
+    - dev_Artifacts

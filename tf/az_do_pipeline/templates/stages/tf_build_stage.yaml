@@ -1,0 +1,28 @@
+parameters:
+- name: env
+  type: string
+- name: sourceFolder
+  type: string
+  default: './terraform_dir'
+  values:
+  - './terraform_dir'
+- name: targetFolder
+  type: string
+  default: 'terraform_dir'
+  values:
+  - 'terraform_dir'
+- name: artifactName
+  type: string
+  default: 'terraform_infra'
+  values: 
+  - 'terraform_infra'
+
+stages:
+- stage: ${{ parameters.env }}_Artifacts
+  displayName: Terraform Generate Artifact Stage
+  jobs:
+  - template: ../jobs/generate_artifacts_job.yaml
+    parameters:
+      sourceFolder: ${{ parameters.sourceFolder }}
+      targetFolder: ${{ parameters.targetFolder }}
+      artifactName: ${{ parameters.artifactName }}_$(Build.BuildNumber)
