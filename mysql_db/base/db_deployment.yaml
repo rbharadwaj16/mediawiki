@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mariadb
+spec: 
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mariadb
+  strategy:
+    type: Recreate 
+  template: 
+    metadata: 
+      labels: 
+        app: mariadb
+    spec: 
+      containers:
+        - name: mariadb
+          image: mariadb
+          env:
+            - name: MARIADB_ROOT_PASSWORD
+              valueFrom: 
+                secretKeyRef:
+                  name: db-secrets
+                  key: db-root-password
+            - name: MARIADB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: db-secrets
+                  key: wiki-username
+            - name: MARIADB_PASSWORD
+              valuFrom:
+                secretKeyRef:
+                  name: db-secrets
+                  key: wiki-password
+          ports:
+            - containerPort: 3306
+              name: mariadb    
+          volumeMounts:
+            - name: mariadb-pv
+              mountPath: /var/lib/mysql    
+            - name: mediawiki_sql_config
+              mountPath: /docker-entrypoint-initdb.d                                           
+      volumes: 
+        - name: mariadb-pv
+          persistentVolumeClaim:
+            claimName: mediawiki-pvc
+        - name: mediawiki_sql_config
+          configMap:
+            name: mediawiki_sql_config
