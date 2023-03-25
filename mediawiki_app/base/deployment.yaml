@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: mediawiki-app
-          image: raghavtest.azurecr.io/raghav/mediawiki:1.0.2
+          image: raghavtest.azurecr.io/raghav/mediawiki:1.0.5
           ports:
             - containerPort: 80
