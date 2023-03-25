@@ -2,7 +2,9 @@ FROM centos:7
 
 RUN yum install -y --setopt=tsflags=nodocs centos-release-scl
 
-RUN yum install -y wget httpd24-httpd rh-php73 rh-php73-php rh-php73-php-mbstring rh-php73-php-mysqlnd rh-php73-php-gd rh-php73-php-xml && yum clean all
+RUN yum install -y wget httpd24-httpd php php-mysqlnd php-gd php-xml && yum clean all
+
+#rh-php73 rh-php73-php rh-php73-php-mbstring rh-php73-php-mysqlnd rh-php73-php-gd rh-php73-php-xml && yum clean all
 
 WORKDIR /opt/rh/httpd24/root/var/www/html
 
