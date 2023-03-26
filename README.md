@@ -25,6 +25,7 @@
 
 - To deploy tf,
     1) All variables consumed by the pipeline can be passed by AzDo library. Create the following variables in library:
+    ```
        subscription_id: #Subscription ID
        tf_rg_name: #Resource Group name that houses storage account to store state file
        tf_rg_location: #Resource Group location that houses storage account to store state file
@@ -34,7 +35,7 @@
        client_id: #Client ID of SPN having access to create resources in the Subscription
        client_secret: #Secret of the SPN
        tenant_id: #Tenant ID of the subscription
-
+    ```
     2) Update the tfvars file to match the requirements. I've left the values I used as is to give a better idea.
 
     3) Speaking of the tf code itself, it's modularised and VNET and Subnet modules are written in a way that's more inclined towards platform engineering teams (that requires high level of resusability) and k8's module, a very simple snippet aligned towards app teams.
