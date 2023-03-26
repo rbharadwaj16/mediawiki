@@ -17,7 +17,7 @@
     2) A CI pipeline can be built for the CI stage that does a few basic steps. I would do it in Azure DevOps and make use of AzDo tasks. Just to illustrate the flow, giving an ex:
     ```
         docker build -t app_name:$(Build.BuildNumber)
-        docker push acr_name
+        docker push app_name:$(Build.BuildNumber)
     ```
     2) Setup project and app on ArgoCD for continuous deployment on the correct branch. As soon as the tag is updated. the ArgoCD hook kicks in and deploys the app.
 
