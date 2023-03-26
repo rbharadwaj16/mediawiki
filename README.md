@@ -15,9 +15,10 @@
     1) While I've copied httpd.conf and base.conf files into dockerfile, I would integrate Ansible and make use of jinja2 templates to customize them per environment so that it can be used across environments.
     
     2) A CI pipeline can be built for the CI stage that does a few basic steps. I would do it in Azure DevOps and make use of AzDo tasks. Just to illustrate the flow, giving an ex:
+    ```
         docker build -t app_name:$(Build.BuildNumber)
         docker push acr_name
-
+    ```
     2) Setup project and app on ArgoCD for continuous deployment on the correct branch. As soon as the tag is updated. the ArgoCD hook kicks in and deploys the app.
 
 ### About the Infra ###
