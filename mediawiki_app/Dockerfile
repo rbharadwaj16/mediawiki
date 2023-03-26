@@ -17,8 +17,6 @@ COPY httpd.conf /opt/rh/httpd24/root/etc/httpd/conf/
 
 COPY 00-base.conf /opt/rh/httpd24/root/etc/httpd/conf.modules.d/00-base.conf
 
-#RUN sed -i -e 's|^DocumentRoot "/opt/rh/httpd24/root/var/www/html"|DocumentRoot "/opt/rh/httpd24/root/var/www/html/mediawiki"|' -e 's|    DirectoryIndex index.html|    DirectoryIndex index.html index.html.var index.php|' -e 's|^<Directory "/opt/rh/httpd24/root/var/www/html">|<Directory "/opt/rh/httpd24/root/var/www/html/mediawiki">|' /opt/rh/httpd24/root/etc/httpd/conf/httpd.conf
-
 RUN chown -R apache:apache /opt/rh/httpd24/root/var/www/html/mediawiki
 
 RUN chmod 755 /opt/rh/httpd24/root/var/www/html/mediawiki/
