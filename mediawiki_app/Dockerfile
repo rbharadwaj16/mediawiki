@@ -9,9 +9,12 @@ WORKDIR /opt/rh/httpd24/root/var/www/html
 RUN wget https://releases.wikimedia.org/mediawiki/1.35/mediawiki-1.35.9.tar.gz && \
     tar -zxf mediawiki-1.35.9.tar.gz && \
     mv mediawiki-1.35.9 mediawiki && \
-    rm -f mediawiki-1.35.9.tar.gz
+    rm -f mediawiki-1.35.9.tar.gz && \
+    rm /opt/rh/httpd24/root/etc/httpd/conf/httpd.conf
 
-RUN sed -i -e 's|^DocumentRoot "/opt/rh/httpd24/root/var/www/html"|DocumentRoot "/opt/rh/httpd24/root/var/www/html/mediawiki"|' -e 's|    DirectoryIndex index.html|    DirectoryIndex index.html index.html.var index.php|' -e 's|^<Directory "/opt/rh/httpd24/root/var/www/html">|<Directory "/opt/rh/httpd24/root/var/www/html/mediawiki">|' /opt/rh/httpd24/root/etc/httpd/conf/httpd.conf
+COPY httpd.conf /opt/rh/httpd24/root/etc/httpd/conf/
+
+#RUN sed -i -e 's|^DocumentRoot "/opt/rh/httpd24/root/var/www/html"|DocumentRoot "/opt/rh/httpd24/root/var/www/html/mediawiki"|' -e 's|    DirectoryIndex index.html|    DirectoryIndex index.html index.html.var index.php|' -e 's|^<Directory "/opt/rh/httpd24/root/var/www/html">|<Directory "/opt/rh/httpd24/root/var/www/html/mediawiki">|' /opt/rh/httpd24/root/etc/httpd/conf/httpd.conf
 
 RUN chown -R apache:apache /opt/rh/httpd24/root/var/www/html/mediawiki
 
