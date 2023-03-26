@@ -3,16 +3,18 @@
 
 ### A brief about the repo ###
 
-- The repo has 3 folders. "mediawiki_app" has all the configs for the app itself. "mysql_db" has all configs related to DB. "terraform" has tf code along with pipeline to deploy it.
+- The repo has 3 folders. "mediawiki_app" folder has all the configs for the app itself. "mysql_db" folder has all configs related to DB. "tf" folder has tf code along with pipeline to deploy it.
 
 - Per the ask, I've chosen "Kustomize" as my go to tool to manage my manifests and I've used "ArgoCD" to deploy the app. All the manifests adhere to the standard structure of kustomize and have a base and overlap manifests.
 
 - Per the ask, I've written IaC using terraform and deployed Infrastructure on Azure.
 
-### About the app ###
+### About the app and improvements that I would do to make the whole implementation enterprise grade ###
 
 - To deploy the app,
-    1) A CI pipeline can be built for the CI stage that does a few basic steps. I would do it in Azure DevOps and make use of AzDo tasks. Just to illustrate the flow, giving an ex:
+    1) While I've copied httpd.conf and base.conf files into dockerfile, I would integrate Ansible and make use of jinja2 templates to customize them per environment so that it can be used across environments.
+    
+    2) A CI pipeline can be built for the CI stage that does a few basic steps. I would do it in Azure DevOps and make use of AzDo tasks. Just to illustrate the flow, giving an ex:
         docker build -t app_name:$(Build.BuildNumber)
         docker push acr_name
 
@@ -41,9 +43,9 @@
 ### Screenshots ###
 
 
-1)Mediawiki deployed successfully in ArgoCD: screenshots/mediawiki_deployed_in_argocd.png
+1) ![Alt text](screenshots/mediawiki_deployed_in_argocd.png Mediawiki deployed successfully in ArgoCD)
 
-2)Installation of mediawiki successful with both app and db working as expected: screenshots/successful_setup_of_mediawiki.png
+2) ![Alt text](screenshots/successful_setup_of_mediawiki.png Installation of mediawiki successful with both app and db working as expected)
 
 
 
