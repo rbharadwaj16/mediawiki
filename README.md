@@ -43,9 +43,9 @@
 ### Screenshots ###
 
 
-1) ![Alt text](screenshots/mediawiki_deployed_in_argocd.png Mediawiki deployed successfully in ArgoCD)
+1) ![Alt text](https://raw.github.com/rbharadwaj16/mediawiki/main/screenshots/mediawiki_deployed_in_argocd.png Mediawiki deployed successfully in ArgoCD)
 
-2) ![Alt text](screenshots/successful_setup_of_mediawiki.png Installation of mediawiki successful with both app and db working as expected)
+2) ![Alt text](https://raw.github.com/rbharadwaj16/mediawiki/main/screenshots/successful_setup_of_mediawiki.png Installation of mediawiki successful with both app and db working as expected)
 
 
 
